@@ -32,7 +32,7 @@ public class UserInfo implements Serializable {
     private String status = STATUS_VALID;
 
     @Column(name = "CRATE_TIME")
-    private Date crateTime;
+    private Date createTime;
 
     @Column(name = "MODIFY_TIME")
     private Date modifyTime;
@@ -75,12 +75,12 @@ public class UserInfo implements Serializable {
         this.status = status == null ? null : status.trim();
     }
 
-    public Date getCrateTime() {
-        return crateTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCrateTime(Date crateTime) {
-        this.crateTime = crateTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Date getModifyTime() {
