@@ -20,7 +20,7 @@ public class UserInfo implements Serializable {
     @Id
     @GeneratedValue(generator = "JDBC")
     @Column(name = "USER_ID")
-    private Integer userId;
+    private Long userId;
 
     @Column(name = "USERNAME")
     private String username;
@@ -43,11 +43,11 @@ public class UserInfo implements Serializable {
     @Transient
     private String roleName;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

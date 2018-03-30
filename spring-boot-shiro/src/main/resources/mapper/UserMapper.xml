@@ -12,12 +12,12 @@
     </resultMap>
 
 
-    <select id="findUserWithRole" resultType="userWithRole">
-        SELECT u.user_id userId, u.username, u.status,ur.role_id from t_user u
-        LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id)
-        WHERE u.user_id = #{userId}
-    </select>
-    <select id="findUserProfile" resultType="user" parameterType="user">
+    <!--<select id="findUserWithRole" resultType="userWithRole">-->
+        <!--SELECT u.user_id userId, u.username, u.status,ur.role_id from t_user u-->
+        <!--LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id)-->
+        <!--WHERE u.user_id = #{userId}-->
+    <!--</select>-->
+    <select id="findUserProfile" resultType="userInfo" parameterType="userInfo">
         SELECT
           u.username,
           u.user_id userId,

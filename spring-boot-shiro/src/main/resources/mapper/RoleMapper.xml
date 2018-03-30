@@ -16,11 +16,11 @@
         WHERE u.username = #{userName}
     </select>
 
-    <select id="findById" resultType="roleWithMenu">
-        SELECT r.role_id roleId, r.role_name roleName, r.remark,
-        rm.menu_id menuId FROM t_role r
-        LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id)
-        WHERE r.role_id = #{roleId}
-    </select>
+    <!--<select id="findById" resultType="roleWithMenu">-->
+        <!--SELECT r.role_id roleId, r.role_name roleName, r.remark,-->
+        <!--rm.menu_id menuId FROM t_role r-->
+        <!--LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id)-->
+        <!--WHERE r.role_id = #{roleId}-->
+    <!--</select>-->
 
 </mapper>
