@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <title>FEBS权限管理系统</title>
+    <title>权限管理系统</title>
     <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.ico}" />
     <link rel="stylesheet" th:href="@{css/login.css}" type="text/css"/>
     <link rel="stylesheet" th:href="@{css/iCheck/minimal/green.css}" type="text/css"/>
@@ -38,10 +38,10 @@
                     <!--<input type="text" name="code" style="width:50%; display:inline-block" />-->
                     <!--<img data-th-src="@{gifCode}" id="validateCodeImg" onclick="reloadCode()" style="display:inline-block" />-->
                 <!--</div>-->
-                <div class="form-group" style="margin: 0px;">
-                    <p>
-                        <input type="checkbox" name="rememberme" />&nbsp;&nbsp;记住我</p>
-                </div>
+                <!--<div class="form-group" style="margin: 0px;">-->
+                    <!--<p>-->
+                        <!--<input type="checkbox" name="rememberme" />&nbsp;&nbsp;记住我</p>-->
+                <!--</div>-->
                 <div class="form-group">
                     <button onclick="login()">登录</button>
                 </div>
@@ -72,7 +72,7 @@
     </div>
 </body>
 <script th:inline="javascript">
-//	var ctx = [[@{/}]];
+	var ctx = [[@{/}]];
 </script>
 <script data-th-src="@{js/app/login.js}"></script>
 </html>

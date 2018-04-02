@@ -32,9 +32,9 @@ public class LoginController extends BaseController {
     @PostMapping("/login")
     @ResponseBody
     public ResponseResult login(String username, String password, String code, Boolean rememberMe) {
-        if (StringUtils.isNullorEmpty(code)) {
-            return ResponseResult.warn("验证码不能为空!");
-        }
+//        if (StringUtils.isNullorEmpty(code)) {
+//            return ResponseResult.warn("验证码不能为空!");
+//        }
 //        Session session = super.getSession();
 //        String sessionCode = (String) session.getAttribute("_code");
 //        if (!code.toLowerCase().equals(sessionCode)) {

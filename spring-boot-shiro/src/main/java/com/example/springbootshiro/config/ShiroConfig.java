@@ -18,26 +18,33 @@ public class ShiroConfig {
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-
-        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        //配置退出过滤器
-        filterChainDefinitionMap.put("/logout", "logout");
-
-        filterChainDefinitionMap.put("/**", "authc");
-
-        //登录界面
         shiroFilterFactoryBean.setLoginUrl("/login");
-        //登录成功后的跳转界面
         shiroFilterFactoryBean.setSuccessUrl("/index");
-        //未授权界面
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
+        LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/fonts/**", "anon");
+        filterChainDefinitionMap.put("/img/**", "anon");
+        filterChainDefinitionMap.put("/druid/**", "anon");
+        filterChainDefinitionMap.put("/user/regist", "anon");
+        filterChainDefinitionMap.put("/gifCode", "anon");
+        filterChainDefinitionMap.put("/logout", "logout");
+        filterChainDefinitionMap.put("/", "anon");
+        filterChainDefinitionMap.put("/**", "user");
+
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+
         return shiroFilterFactoryBean;
     }
 
+    @Bean
+    public ShiroRealm myShiroRealm() {
+        return new ShiroRealm();
+    }
     /**
      * 注入Shiro SerucityManager
      * @return
@@ -45,6 +52,7 @@ public class ShiroConfig {
     @Bean
     public SecurityManager securityManager(){
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        securityManager.setRealm(myShiroRealm());
         return securityManager;
     }
 }

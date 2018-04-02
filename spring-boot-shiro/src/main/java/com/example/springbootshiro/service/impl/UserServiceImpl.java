@@ -134,4 +134,9 @@ public class UserServiceImpl extends BaseService<UserInfo> implements UserServic
         user.setPassword(null);
         this.updateNotNull(user);
     }
+
+    @Override
+    public List<UserInfo> getUserList() {
+        return userMapper.selectAll();
+    }
 }

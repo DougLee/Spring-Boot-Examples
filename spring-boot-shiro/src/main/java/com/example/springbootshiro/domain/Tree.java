@@ -1,5 +1,7 @@
 package com.example.springbootshiro.domain;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -7,27 +9,54 @@ import java.util.Map;
 /**
  * Created by Douglee on 2018/3/29.
  */
+
 public class Tree<T> {
-
+    /**
+     * 节点ID
+     */
     private String id;
-
+    /**
+     * 图标
+     */
     private String icon;
-
+    /**
+     * url
+     */
     private String url;
-
+    /**
+     * 显示节点文本
+     */
+    private String text;
+    /**
+     * 节点状态，open closed
+     */
     private Map<String, Object> state;
-
+    /**
+     * 节点是否被选中 true false
+     */
     private boolean checked = false;
-
+    /**
+     * 节点属性
+     */
     private Map<String, Object> attributes;
 
+    /**
+     * 节点的子节点
+     */
     private List<Tree<T>> children = new ArrayList<Tree<T>>();
 
+    /**
+     * 父ID
+     */
     private String parentId;
-
+    /**
+     * 是否有父节点
+     */
     private boolean hasParent = false;
-
-    private boolean hasChild = false;
+    /**
+     * 是否有子节点
+     */
+    private boolean hasChildren = false;
 
     public String getId() {
         return id;
@@ -37,20 +66,12 @@ public class Tree<T> {
         this.id = id;
     }
 
-    public String getIcon() {
-        return icon;
+    public String getText() {
+        return text;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public Map<String, Object> getState() {
@@ -85,6 +106,22 @@ public class Tree<T> {
         this.children = children;
     }
 
+    public boolean isHasParent() {
+        return hasParent;
+    }
+
+    public void setHasParent(boolean isParent) {
+        this.hasParent = isParent;
+    }
+
+    public boolean isHasChildren() {
+        return hasChildren;
+    }
+
+    public void setHasChildren(boolean isChildren) {
+        this.hasChildren = isChildren;
+    }
+
     public String getParentId() {
         return parentId;
     }
@@ -93,19 +130,46 @@ public class Tree<T> {
         this.parentId = parentId;
     }
 
-    public boolean isHasParent() {
-        return hasParent;
+    public String getIcon() {
+        return icon;
     }
 
-    public void setHasParent(boolean hasParent) {
-        this.hasParent = hasParent;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
-    public boolean isHasChild() {
-        return hasChild;
+    public String getUrl() {
+        return url;
     }
 
-    public void setHasChild(boolean hasChild) {
-        this.hasChild = hasChild;
+    public void setUrl(String url) {
+        this.url = url;
     }
+
+    public Tree(String id, String text, Map<String, Object> state, boolean checked, Map<String, Object> attributes,
+                List<Tree<T>> children, String icon, String url, boolean isParent, boolean isChildren, String parentID) {
+        super();
+        this.id = id;
+        this.text = text;
+        this.icon = icon;
+        this.url = url;
+        this.state = state;
+        this.checked = checked;
+        this.attributes = attributes;
+        this.children = children;
+        this.hasParent = isParent;
+        this.hasChildren = isChildren;
+        this.parentId = parentID;
+    }
+
+    public Tree() {
+        super();
+    }
+
+    @Override
+    public String toString() {
+
+        return JSON.toJSONString(this);
+    }
+
 }
