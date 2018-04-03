@@ -13,4 +13,10 @@ public interface MenuMapper extends MyMapper<MenuInfo> {
     List<MenuInfo> findUserPermissions(String userName);
 
     List<MenuInfo> findUserMenus(String userName);
+
+    /**
+     * 删除父节点, 子节点变成顶级节点
+     * @param menuIds
+     */
+    void changToTop(List<String> menuIds);
 }

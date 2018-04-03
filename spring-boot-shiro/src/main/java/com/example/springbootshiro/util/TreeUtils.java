@@ -12,20 +12,20 @@ import java.util.Map;
  */
 public class TreeUtils {
 
-    public static <T> Tree<T> build(List<Tree<T>> nodes){
+    public static <T> Tree<T> build(List<Tree<T>> nodes) {
         if (nodes == null) {
             return null;
         }
 
         List<Tree<T>> topNodes = new ArrayList<>();
-        for (Tree<T> children: nodes){
+        for (Tree<T> children : nodes) {
             String pid = children.getParentId();
             if (pid == null || "0".equals(pid)) {
                 topNodes.add(children);
                 continue;
             }
 
-            for (Tree<T> parent: nodes){
+            for (Tree<T> parent : nodes) {
                 String id = parent.getId();
                 if (id != null && id.equals(pid)) {
                     parent.getChildren().add(children);
@@ -48,6 +48,33 @@ public class TreeUtils {
         root.setState(state);
 
         return root;
-
     }
+
+    public static <T> List<Tree<T>> buildList(List<Tree<T>> nodes, String idParam) {
+        if (nodes == null) {
+            return null;
+        }
+
+        List<Tree<T>> topNodes = new ArrayList<>();
+        for (Tree<T> children : nodes) {
+            String pid = children.getParentId();
+            if (pid == null || idParam.equals(pid)) {
+                topNodes.add(children);
+                continue;
+            }
+            for (Tree<T> parent : nodes) {
+                String id = parent.getId();
+                if (id != null && id.equals(pid)) {
+                    parent.getChildren().add(children);
+                    children.setHasParent(true);
+                    parent.setHasChildren(true);
+                    continue;
+                }
+            }
+
+        }
+        return topNodes;
+    }
+
+
 }
