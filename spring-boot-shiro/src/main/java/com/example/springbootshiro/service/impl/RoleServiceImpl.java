@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -65,6 +66,7 @@ public class RoleServiceImpl extends BaseService<RoleInfo> implements RoleServic
             return list.get(0);
         }
     }
+
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)

@@ -73,22 +73,19 @@ public class MenuServiceImpl extends BaseService<MenuInfo> implements MenuServic
         return t;
     }
 
-    @Override
     public Tree<MenuInfo> getMenuTree() {
-        List<Tree<MenuInfo>> trees = new ArrayList<>();
+        List<Tree<MenuInfo>> trees = new ArrayList<Tree<MenuInfo>>();
         Example example = new Example(MenuInfo.class);
-        example.createCriteria().andCondition("type=", 0);
+        example.createCriteria().andCondition("type =", 0);
         example.setOrderByClause("create_time");
         List<MenuInfo> menus = this.menuMapper.selectByExample(example);
-        for (MenuInfo menuInfo: menus){
-            Tree<MenuInfo> tree = new Tree<>();
-            tree.setId(menuInfo.getMenuId().toString());
-            tree.setParentId(menuInfo.getParentId().toString());
-            tree.setText(menuInfo.getMenuName());
-
+        for (MenuInfo menu : menus) {
+            Tree<MenuInfo> tree = new Tree<MenuInfo>();
+            tree.setId(menu.getMenuId().toString());
+            tree.setParentId(menu.getParentId().toString());
+            tree.setText(menu.getMenuName());
             trees.add(tree);
         }
-
         Tree<MenuInfo> t = TreeUtils.build(trees);
         return t;
     }

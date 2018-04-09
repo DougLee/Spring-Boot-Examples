@@ -14,6 +14,12 @@ import java.util.Date;
 public class MenuInfo implements Serializable {
     private static final long serialVersionUID = 5653758334711519506L;
 
+    // Type=0表示菜单
+    public static final String TYPE_MENU = "0";
+
+    //Type=1表示按钮
+    public static final String TYPE_BUTTON = "1";
+
     @Id
     @GeneratedValue(generator = "JDBC")
     @Column(name = "MENU_ID")

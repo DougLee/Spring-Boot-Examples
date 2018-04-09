@@ -174,7 +174,7 @@
 	    }
 	}
 
-	$(".user__img").attr("src", avatar);
+	// $(".user__img").attr("src", avatar);
 	$("#user__profile").on('click', function() {
 	    $.post(ctx + "user/profile", function(r) {
 	        $breadcrumb.html("").append('<li class="breadcrumb-item">个人信息</li>');
