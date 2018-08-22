@@ -1,5 +1,5 @@
 # Spring-Boot-Examples
-Spring Boot 系列教程
+Spring Boot 示例
 
 ## 入门
 
